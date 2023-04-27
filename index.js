@@ -10,6 +10,7 @@ app.use(bodyparser.urlencoded({extended:true}))
 
 // app.use('view engine', 'ejs')
 const studentModel = require('./models/student.model')
+const staffModel = require('./models/staff.model')
 const studentRouter = require('./routes/student.route')
 const staffRouter = require('./routes/staff.route')
 
