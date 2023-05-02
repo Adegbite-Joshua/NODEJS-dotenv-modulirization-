@@ -1,29 +1,12 @@
 const express = require('express');
+const { getStaff, staffLogin, staffSignup, staffSignupPost } = require('../controllers/staff.controller');
 const router = express.Router();
 const staffModel = require('../models/staff.model')
 
-
-router.get('/', (req,res)=>{
-    res.send({action: 'staff signup'})
-})
-router.get('/login', (req,res)=>{
-    res.send({action: 'staff login'})
-})
-router.get('/signup', (req,res)=>{
-    res.render('staffSignUp' , {message: ''})
-})
-router.post('/signup', (req,res)=>{
-    let form = new staffModel(req.body);
-    form.save()
-    .then(()=>{
-        res.send('form submitted')
-    })
-    .catch((err)=>{
-        console.log(err)
-        res.send('form failed')
-        console.log(req.body)
-    })
-})
+router.get('/', getStaff)
+router.get('/login', staffLogin)
+router.get('/signup', staffSignup)
+router.post('/signup', staffSignupPost)
 
 
 
